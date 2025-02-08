@@ -1,0 +1,337 @@
+/* Hauptcontainer */
+.tx-openai-chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Chat Button */
+.tx-openai-chatbot .chat-button button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #0d6efd, #0b5ed7);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+    transition: all 0.3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tx-openai-chatbot .chat-button button:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+}
+
+.tx-openai-chatbot .chat-button svg {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.tx-openai-chatbot .chat-button button:hover svg {
+    transform: scale(1.1);
+}
+
+/* Chat Window */
+.tx-openai-chatbot .chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 360px;
+    height: 600px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    /* Kein overflow:hidden, damit der innere scrollbare Bereich sichtbar bleibt */
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tx-openai-chatbot .chat-window.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Chat Header */
+.tx-openai-chatbot .chat-header {
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tx-openai-chatbot .chat-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.tx-openai-chatbot .chat-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.tx-openai-chatbot .chat-close:hover {
+    background: rgba(108, 117, 125, 0.1);
+    color: #212529;
+}
+
+/* Chat Content Area (flexibler Container) */
+.tx-openai-chatbot .chat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Damit nur der Nachrichtenbereich scrollt */
+    background: #fff;
+}
+
+/* Nachrichtenbereich – scrollbar */
+.tx-openai-chatbot .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Einzelne Nachrichten */
+.tx-openai-chatbot .message {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tx-openai-chatbot .message.user {
+    align-items: flex-end;
+}
+
+.tx-openai-chatbot .message.assistant {
+    align-items: flex-start;
+}
+
+.tx-openai-chatbot .message-content {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    position: relative;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.tx-openai-chatbot .message.user .message-content {
+    background: #0d6efd;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.tx-openai-chatbot .message.assistant .message-content {
+    background: #f8f9fa;
+    color: #212529;
+    border-bottom-left-radius: 4px;
+}
+
+/* Loading Indicator */
+.tx-openai-chatbot .message.loading .message-content {
+    background: #f8f9fa;
+    min-width: 100px;
+}
+
+.tx-openai-chatbot .loading-dots {
+    display: flex;
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.tx-openai-chatbot .loading-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6c757d;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.tx-openai-chatbot .loading-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.tx-openai-chatbot .loading-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.tx-openai-chatbot .typing-indicator {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+/* Fehleranzeige */
+.tx-openai-chatbot .message.error .message-content {
+    background: #dc3545;
+    color: white;
+}
+
+/* Chat Input Area – fixierte Eingabemaske */
+.tx-openai-chatbot .chat-input {
+    padding: 15px;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.tx-openai-chatbot .chat-input textarea {
+    flex: 1;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 12px 15px;
+    resize: none;
+    min-height: 44px;
+    max-height: 120px;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.tx-openai-chatbot .chat-input textarea:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+.tx-openai-chatbot .send-message {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tx-openai-chatbot .send-message:hover {
+    background: #0b5ed7;
+    transform: scale(1.05);
+}
+
+.tx-openai-chatbot .send-message svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Scrollbar Styling */
+.tx-openai-chatbot .chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tx-openai-chatbot .chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.tx-openai-chatbot .chat-messages::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.tx-openai-chatbot .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive Anpassungen für Tablets */
+@media (max-width: 768px) {
+    .tx-openai-chatbot .chat-window {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 120px);
+        bottom: 70px;
+        right: 20px;
+    }
+    .tx-openai-chatbot .chat-button button {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Responsive Anpassungen für Mobile */
+@media (max-width: 480px) {
+    .tx-openai-chatbot .chat-window {
+        width: calc(100vw - 20px);
+        height: calc(100vh - 100px);
+        bottom: 70px;
+        right: 10px;
+        border-radius: 10px;
+    }
+    .tx-openai-chatbot .chat-header,
+    .tx-openai-chatbot .chat-input {
+        padding: 10px;
+    }
+    .tx-openai-chatbot .chat-header h3 {
+        font-size: 1rem;
+    }
+    .tx-openai-chatbot .chat-button button {
+        width: 45px;
+        height: 45px;
+    }
+    .tx-openai-chatbot .chat-close {
+        font-size: 1.2rem;
+        width: 25px;
+        height: 25px;
+    }
+    .tx-openai-chatbot .chat-input textarea {
+        padding: 10px;
+    }
+    .tx-openai-chatbot .send-message {
+        width: 38px;
+        height: 38px;
+    }
+}

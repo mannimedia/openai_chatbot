@@ -1,0 +1,57 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="tx-openai-chatbot" 
+         data-position="{f:if(condition: settings.position, then: settings.position, else: 'bottom-right')}"
+         data-endpoint="{f:uri.action(action: 'sendMessage', controller: 'Chat', pageType: '1234567890', extensionName: 'OpenaiChatbot', pluginName: 'Chat', noCache: 1, absolute: 1)}">
+        
+        <div class="chat-button">
+            <button type="button" aria-label="{f:translate(key: 'chat.open', default: 'Chat öffnen')}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="chat-window">
+            <div class="chat-header">
+                <span><f:translate key="chat.title" default="Chat" /></span>
+                <span class="chat-close" title="{f:translate(key: 'chat.close', default: 'Schließen')}">&times;</span>
+            </div>
+            
+            <div class="chat-content">
+                <div class="chat-messages">
+                    <!-- Messages will be inserted here -->
+                </div>
+                
+                <div class="chat-input">
+                    <textarea 
+                        id="chat-message-input"
+                        name="message"
+                        placeholder="{f:translate(key: 'chat.placeholder', default: 'Ihre Nachricht...')}" 
+                        rows="1" 
+                        aria-label="{f:translate(key: 'chat.input', default: 'Chat Eingabe')}"
+                    ></textarea>
+                    <button type="button" id="chat-send-button" title="{f:translate(key: 'chat.send', default: 'Senden')}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <f:form action="giveConsent" name="consent" class="consent-form">
+                    <div class="form-check">
+                        <f:form.checkbox property="consent" id="privacy-consent-checkbox" value="1" class="form-check-input" />
+                        <label class="form-check-label" for="privacy-consent-checkbox">
+                            <f:translate key="privacy.consent.checkbox" default="Ich habe den Datenschutzhinweis gelesen und akzeptiere ihn" />
+                        </label>
+                    </div>
+                    <f:form.submit id="privacy-consent-submit" value="{f:translate(key: 'privacy.consent.submit', default: 'Bestätigen')}" class="btn btn-primary mt-3" />
+                </f:form>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

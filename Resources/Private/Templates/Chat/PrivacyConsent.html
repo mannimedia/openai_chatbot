@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="privacy-consent">
+        <h2>Datenschutzhinweis</h2>
+        <p>
+            Dieser Chat verwendet die OpenAI API. Ihre Nachrichten werden zur Verarbeitung an OpenAI übermittelt.
+            Bitte beachten Sie, dass keine persönlichen oder sensiblen Daten übermittelt werden sollten.
+        </p>
+        <f:form action="giveConsent" name="consent" object="{consent}">
+            <f:form.checkbox property="accepted" value="1" />
+            <label>Ich habe den Datenschutzhinweis gelesen und akzeptiere ihn</label>
+            <f:form.submit value="Bestätigen" class="btn btn-primary" />
+        </f:form>
+    </div>
+</f:section>
+</html>

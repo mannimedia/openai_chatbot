@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" product-name="openai_chatbot">
+        <header/>
+        <body>
+            <trans-unit id="plugin.title">
+                <source>OpenAI Chatbot</source>
+            </trans-unit>
+            <trans-unit id="plugin.description">
+                <source>Integrates OpenAI chat functionality</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

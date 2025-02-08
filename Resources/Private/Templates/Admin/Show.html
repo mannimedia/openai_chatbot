@@ -1,0 +1,120 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" 
+      xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1>Chat Thread Details</h1>
+
+    <f:if condition="{thread}">
+        <f:then>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Thread Information</h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>Thread ID</th>
+                            <td>{thread.threadId}</td>
+                        </tr>
+                        <tr>
+                            <th>User</th>
+                            <td>
+                                <f:if condition="{thread.feUser}">
+                                    <f:then>User #{thread.feUser}</f:then>
+                                    <f:else>Anonymous</f:else>
+                                </f:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Start Time</th>
+                            <td><f:format.date format="d.m.Y H:i">{thread.startTime}</f:format.date></td>
+                        </tr>
+                        <tr>
+                            <th>Last Activity</th>
+                            <td>
+                                <f:if condition="{thread.lastActivity}">
+                                    <f:format.date format="d.m.Y H:i">{thread.lastActivity}</f:format.date>
+                                </f:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                <f:if condition="{thread.isArchived}">
+                                    <span class="badge badge-info">Archived</span>
+                                <f:else>
+                                    <span class="badge badge-success">Active</span>
+                                </f:else>
+                                </f:if>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Chat Messages</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="chat-messages">
+                        <f:if condition="{thread.messages}">
+                            <f:for each="{thread.messages -> f:format.json.decode()}" as="message">
+                                <div class="message {message.role}">
+                                    <div class="message-header">
+                                        <span class="message-role">{message.role -> f:format.case(mode: 'capital')}</span>
+                                        <span class="message-time">
+                                            <f:format.date format="d.m.Y H:i">{message.timestamp}</f:format.date>
+                                        </span>
+                                    </div>
+                                    <div class="message-content">
+                                        {message.content -> f:format.nl2br()}
+                                    </div>
+                                </div>
+                            </f:for>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Actions</h2>
+                </div>
+                <div class="panel-body">
+                    <f:if condition="{thread.isArchived}">
+                        <f:then>
+                            <f:link.action action="delete" arguments="{threadId: thread.threadId}" class="btn btn-danger">
+                                <core:icon identifier="actions-delete" /> Delete Thread
+                            </f:link.action>
+                        </f:then>
+                        <f:else>
+                            <f:link.action action="archive" arguments="{threadId: thread.threadId}" class="btn btn-info">
+                                <core:icon identifier="actions-archive" /> Archive Thread
+                            </f:link.action>
+                        </f:else>
+                    </f:if>
+                    
+                    <f:link.action action="list" class="btn btn-default">
+                        <core:icon identifier="actions-view-go-back" /> Back to List
+                    </f:link.action>
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="alert alert-danger">
+                <div class="message-body">
+                    Thread not found.
+                </div>
+            </div>
+
+            <f:link.action action="list" class="btn btn-default">
+                <core:icon identifier="actions-view-go-back" /> Back to List
+            </f:link.action>
+        </f:else>
+    </f:if>
+</f:section>
+</html>

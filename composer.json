@@ -1,0 +1,31 @@
+{
+    "name": "mannimedia/openai-chatbot",
+    "type": "typo3-cms-extension",
+    "description": "OpenAI Chatbot Integration für TYPO3",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^12.4",
+        "php": ">=8.2",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^7.0.2",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ManniMedia\\OpenaiChatbot\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ManniMedia\\OpenaiChatbot\\Tests\\": "Tests/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "openai_chatbot"
+        }
+    }
+}

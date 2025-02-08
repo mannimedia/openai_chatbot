@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="tx-openai-chatbot">
+    <div id="chat-container" class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+            <f:for each="{chatHistory}" as="message">
+                <div class="message {message.role}">
+                    <div class="message-content">
+                        {message.content -> f:format.nl2br()}
+                    </div>
+                </div>
+            </f:for>
+        </div>
+        <div class="chat-input">
+            <form id="chat-form" onsubmit="return false;">
+                <textarea id="user-message" placeholder="Ihre Nachricht..." rows="3"></textarea>
+                <button type="submit" id="send-message">Senden</button>
+            </form>
+        </div>
+    </div>
+</div>

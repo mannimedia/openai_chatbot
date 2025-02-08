@@ -1,0 +1,26 @@
+<div class="tx-openai-chatbot" data-thread-id="{threadId}">
+    <f:if condition="{consentGiven}">
+        <f:then>
+            <div id="chat-container">
+                <div id="chat-messages">
+                    <f:for each="{messages}" as="message">
+                        <div class="chat-message {message.role}">
+                            {message.content}
+                            <small class="message-time">
+                                <f:format.date format="H:i:s">{message.timestamp}</f:format.date>
+                            </small>
+                        </div>
+                    </f:for>
+                </div>
+                <div class="chat-input-area">
+                    <textarea id="chat-input" placeholder="Ihre Nachricht..."></textarea>
+                    <button id="send-message">Senden</button>
+                    <button id="clear-chat" class="secondary">Chat löschen</button>
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+            <f:render partial="DsgvoConsent" />
+        </f:else>
+    </f:if>
+</div>

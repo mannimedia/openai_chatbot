@@ -1,0 +1,38 @@
+<div class="tx-openai-chatbot" 
+     data-position="{f:if(condition: settings.position, then: settings.position, else: 'bottom-right')}"
+     data-endpoint="{f:uri.action(action: 'sendMessage', controller: 'Chat', pageType: '1234567890')}">
+    
+    <div class="chat-button">
+        <button type="button" aria-label="{f:translate(key: 'chat.open', default: 'Chat öffnen')}">
+            <i class="fas fa-comment"></i>
+        </button>
+    </div>
+    
+    <div class="chat-window">
+        <div class="chat-header">
+            <span><f:translate key="chat.title" default="Chat" /></span>
+            <span class="chat-close" title="{f:translate(key: 'chat.close', default: 'Schließen')}">&times;</span>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <f:for each="{messages}" as="message">
+                <div class="message {message.role}">
+                    <div class="message-content">
+                        <f:format.raw>{message.content}</f:format.raw>
+                    </div>
+                </div>
+            </f:for>
+        </div>
+        
+        <div class="chat-input">
+            <textarea 
+                placeholder="{f:translate(key: 'chat.placeholder', default: 'Ihre Nachricht...')}" 
+                rows="1" 
+                aria-label="{f:translate(key: 'chat.input', default: 'Chat Eingabe')}"
+            ></textarea>
+            <button type="button" title="{f:translate(key: 'chat.send', default: 'Senden')}">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>

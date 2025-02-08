@@ -1,0 +1,71 @@
+page.includeJSFooter.chatbot = EXT:openai_chatbot/Resources/Public/JavaScript/chat.js
+page.includeCSS.chatbot = EXT:openai_chatbot/Resources/Public/Css/chat.css
+
+plugin.tx_openai_chatbot {
+    settings {
+        sessionHandling = 1
+        ajaxEndpoint = {$plugin.tx_openai_chatbot.settings.ajaxEndpoint}
+    }
+    view {
+        templateRootPaths {
+            0 = EXT:openai_chatbot/Resources/Private/Templates/
+            1 = {$plugin.tx_openai_chatbot.view.templateRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:openai_chatbot/Resources/Private/Layouts/
+            1 = {$plugin.tx_openai_chatbot.view.layoutRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:openai_chatbot/Resources/Private/Partials/
+            1 = {$plugin.tx_openai_chatbot.view.partialRootPath}
+        }
+    }
+
+    persistence {
+        storagePid = 87
+    }
+}
+
+# Aktiviere Frontend-User-Session
+config.tx_extbase {
+    features {
+        skipDefaultArguments = 0
+        requireCHashArgumentForActionArguments = 0
+    }
+}
+
+# Frontend-Session aktivieren
+config {
+    no_cache = 1
+    sendCacheHeaders = 0
+}
+
+chatAjaxPage = PAGE
+chatAjaxPage {
+    typeNum = 1709343142
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders {
+            10.header = Content-Type: application/json
+            10.replace = 1
+            20.header = Access-Control-Allow-Origin: *
+            30.header = Access-Control-Allow-Methods: POST, GET, OPTIONS
+            40.header = Access-Control-Allow-Headers: Content-Type, X-Requested-With
+        }
+        debug = 0
+        no_cache = 1
+    }
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = OpenaiChatbot
+        pluginName = Chat
+        vendorName = ManniMedia
+        controller = Chat
+        action = conversationAjax
+        persistence {
+            storagePid = 87
+        }
+    }
+}
+

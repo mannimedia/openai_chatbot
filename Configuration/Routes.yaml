@@ -1,0 +1,11 @@
+routeEnhancers:
+  ChatPlugin:
+    type: Simple
+    route: api/chat
+    defaults:
+      handler: ManniMedia\OpenaiChatbot\Controller\ChatController::chatAction
+  chatbot_conversation:
+    path: 'chatbot/conversation'
+    methods: ['POST']
+    defaults:
+      handler: 'ManniMedia\OpenaiChatbot\Controller\ChatController::conversationAjaxAction'

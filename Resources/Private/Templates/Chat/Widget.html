@@ -1,0 +1,55 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="tx-openai-chatbot" data-ajax-url="{ajaxUrl}">
+        <div class="chat-button">
+            <button type="button" aria-label="Chat öffnen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="chat-window">
+            <div class="chat-header">
+                <h3>Chat Support</h3>
+                <button type="button" class="chat-close" aria-label="Chat schließen">×</button>
+            </div>
+
+            <div class="chat-content">
+                <div class="chat-messages">
+                    <div class="message assistant">
+                        <div class="message-content">
+                            Hallo! Wie kann ich Ihnen helfen?
+                        </div>
+                    </div>
+                </div>
+
+                <template id="loading-indicator-template">
+                    <div class="message assistant loading">
+                        <div class="message-content">
+                            <div class="loading-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="typing-indicator">Assistant schreibt...</div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="chat-input">
+                    <textarea placeholder="Ihre Nachricht..." rows="1"></textarea>
+                    <button type="button" class="send-message" aria-label="Nachricht senden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,15 @@
+<div class="privacy-consent">
+    <h3><f:translate key="privacy.consent.title" default="Datenschutzhinweis" /></h3>
+    <p>
+        <f:translate key="privacy.consent.text" default="Dieser Chat verwendet die OpenAI API. Ihre Nachrichten werden zur Verarbeitung an OpenAI übermittelt. Bitte beachten Sie, dass keine persönlichen oder sensiblen Daten übermittelt werden sollten." />
+    </p>
+    <f:form action="giveConsent" name="consent" class="consent-form">
+        <div class="form-check">
+            <f:form.checkbox property="consent" value="1" class="form-check-input" />
+            <label class="form-check-label">
+                <f:translate key="privacy.consent.checkbox" default="Ich habe den Datenschutzhinweis gelesen und akzeptiere ihn" />
+            </label>
+        </div>
+        <f:form.submit value="{f:translate(key: 'privacy.consent.submit', default: 'Bestätigen')}" class="btn btn-primary mt-3" />
+    </f:form>
+</div>

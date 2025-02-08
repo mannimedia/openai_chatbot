@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2025-01-30T18:22:13+01:00" product-name="openai_chatbot">
+        <header/>
+        <body>
+            <trans-unit id="chat.title">
+                <source>Chat with AI Assistant</source>
+                <target>Chat mit KI-Assistent</target>
+            </trans-unit>
+            <trans-unit id="chat.placeholder">
+                <source>Type your message here...</source>
+                <target>Geben Sie Ihre Nachricht ein...</target>
+            </trans-unit>
+            <trans-unit id="chat.send">
+                <source>Send</source>
+                <target>Senden</target>
+            </trans-unit>
+            <trans-unit id="chat.error">
+                <source>An error occurred. Please try again.</source>
+                <target>Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.</target>
+            </trans-unit>
+            <trans-unit id="chat.loading">
+                <source>Loading...</source>
+                <target>Laden...</target>
+            </trans-unit>
+            <trans-unit id="chat.close">
+                <source>Close</source>
+                <target>Schließen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,18 @@
+plugin.tx_openai_chatbot {
+    settings {
+        # cat=plugin.tx_openai_chatbot/basic/010; type=string; label=Ajax Endpoint für Chat-Anfragen
+        ajaxEndpoint = /api/chat
+
+        # cat=plugin.tx_openai_chatbot/basic/020; type=boolean; label=Session-Handling aktivieren
+        enableSession = 1
+    }
+    view {
+        # cat=plugin.tx_openai_chatbot/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:openai_chatbot/Resources/Private/Templates/
+        # cat=plugin.tx_openai_chatbot/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:openai_chatbot/Resources/Private/Partials/
+        # cat=plugin.tx_openai_chatbot/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:openai_chatbot/Resources/Private/Layouts/
+    }
+
+}

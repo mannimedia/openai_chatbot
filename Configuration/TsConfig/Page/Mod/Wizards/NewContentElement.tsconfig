@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+    elements {
+        openai_chatbot {
+            iconIdentifier = content-openai-chatbot
+            title = LLL:EXT:openai_chatbot/Resources/Private/Language/locallang.xlf:plugin.title
+            description = LLL:EXT:openai_chatbot/Resources/Private/Language/locallang.xlf:plugin.description
+            tt_content_defValues {
+                CType = list
+                list_type = openai_chatbot_chat
+            }
+        }
+    }
+    show := addToList(openai_chatbot)
+}

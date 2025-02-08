@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:openai_chatbot/Resources/Private/Language/locallang.xlf:flexform.sheet.settings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <!-- Hier können weitere Plugin-Einstellungen hinzugefügt werden -->
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

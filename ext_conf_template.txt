@@ -1,0 +1,38 @@
+# cat=basic/enable; type=string; label=OpenAI API Key
+apiKey =
+
+# cat=basic/enable; type=string; label=OpenAI Assistant ID
+assistantId =
+
+# cat=basic/enable; type=text; label=Assistenten-Anweisungen (wird nur verwendet, wenn keine Assistant ID angegeben ist)
+assistantInstructions = Du bist ein hilfsbereicher TYPO3 Assistent. Antworte präzise und professionell auf Fragen rund um TYPO3.
+
+# cat=basic/enable; type=string; label=GPT Modell (wird nur verwendet, wenn keine Assistant ID angegeben ist)
+model = gpt-4o-mini
+
+# cat=basic/enable; type=string; label=Name des Chatbots
+chatBotname = Chatbot
+
+# cat=extras/enable; type=boolean; label=DSGVO-Hinweis aktivieren
+enablePrivacyNotice = 1
+
+# cat=extras/enable; type=text; label=DSGVO-Hinweistext
+privacyNoticeText = Ich stimme zu, dass meine Eingaben an OpenAI übermittelt und dort verarbeitet werden. Die Daten werden ausschließlich zur Beantwortung meiner Anfragen verwendet.
+
+# cat=extras/enable/30; type=int+; label=Max Tokens
+maxTokens = 2000
+
+# cat=basic/enable/40; type=float; label=Temperature
+temperature = 0.7
+
+# cat=extras/enable; type=string; label=Default Language: Default language code if none is detected (e.g., 'en', 'de')
+defaultLanguage = en
+
+# cat=style/style; type=string; label=Chat Button Position: Position of the chat button (bottom-right, bottom-left, top-right, top-left)
+chatButtonPosition = bottom-right
+
+# cat=style/style; type=color; label=Primary Color: Main color for the chat interface
+primaryColor = #0074D9
+
+# cat=stylw/style; type=boolean; label=Enable Dark Mode: Allow users to switch between light and dark mode
+enableDarkMode = 1

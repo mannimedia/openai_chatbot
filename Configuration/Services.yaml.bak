@@ -1,0 +1,25 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  ManniMedia\OpenaiChatbot\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
+      - '../Classes/Exception/*'
+
+  ManniMedia\OpenaiChatbot\Service\OpenAIService:
+    public: true
+    arguments:
+      $apiKey: '%env(OPENAI_API_KEY)%'
+      $extensionConfiguration: '@TYPO3\CMS\Core\Configuration\ExtensionConfiguration'
+
+
+  ManniMedia\OpenaiChatbot\Controller\ChatController:
+    public: true
+    tags: ['controller.requesthandler']
+
+  ManniMedia\OpenaiChatbot\Service\ChatSessionService:
+    public: true

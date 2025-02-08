@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:openai_chatbot/Resources/Private/Language/locallang_db.xlf" date="2025-01-30T12:00:00Z" product-name="openai_chatbot">
+        <header/>
+        <body>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread">
+                <source>Chat Thread</source>
+            </trans-unit>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread.thread_id">
+                <source>Thread ID</source>
+            </trans-unit>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread.fe_user">
+                <source>Frontend User</source>
+            </trans-unit>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread.messages">
+                <source>Messages</source>
+            </trans-unit>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread.start_time">
+                <source>Start Time</source>
+            </trans-unit>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread.last_activity">
+                <source>Last Activity</source>
+            </trans-unit>
+            <trans-unit id="tx_openai_chatbot_domain_model_chatthread.is_archived">
+                <source>Is Archived</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_openai_chatbot_disabled">
+                <source>Disable ChatBot on this page</source>
+                <target>ChatBot auf dieser Seite deaktivieren</target>
+            </trans-unit>
+
+            <trans-unit id="pages.tx_openai_chatbot_disabled.description">
+                <source>If checked, the chatbot will not be displayed on this page.</source>
+            </trans-unit>
+            <trans-unit id="plugin.title">
+                <source>OpenAI Chatbot</source>
+            </trans-unit>
+            <trans-unit id="plugin.description">
+                <source>Adds an AI-powered chatbot to your website</source>
+            </trans-unit>
+            <trans-unit id="chat.title">
+                <source>Chat with us</source>
+            </trans-unit>
+            <trans-unit id="chat.placeholder">
+                <source>Type your message here...</source>
+            </trans-unit>
+            <trans-unit id="chat.send">
+                <source>Send</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

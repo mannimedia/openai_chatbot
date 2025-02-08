@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: false
+    autoconfigure: false
+    public: false
+
+  ManniMedia\OpenaiChatbot\Controller\ChatController:
+    public: true
+    autowire: true
+    arguments:
+      $sessionManager: '@ManniMedia\OpenaiChatbot\Service\SessionManager'
+      $openAIService: '@ManniMedia\OpenaiChatbot\Service\OpenAIService'
+
+  ManniMedia\OpenaiChatbot\Service\SessionManager:
+    public: true
+
+  ManniMedia\OpenaiChatbot\Service\OpenAIService:
+    public: true
+
+  ManniMedia\OpenaiChatbot\Hooks\PageRendererHook:
+    public: true
+
+

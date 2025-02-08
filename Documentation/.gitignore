@@ -1,0 +1,14 @@
+*GENERATED*
+*.idea
+*.project
+*.swp
+.DS_Store
+._.DS_Store
+._*
+.buildinfo
+.editorconfig
+.env
+.env.example
+.php_cs.cache
+.php-cs-fixer.cache
+Build/*
