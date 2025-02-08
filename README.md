@@ -1,25 +1,25 @@
 # TYPO3 OpenAI Chatbot Extension
 
-## Übersicht
+## Overview
 
-Die OpenAI Chatbot Extension integriert einen KI-gestützten Chatbot in TYPO3-Websites. Die Extension nutzt die OpenAI API und unterstützt persistente Konversationen durch Session-Management.
+The OpenAI Chatbot Extension integrates an AI-powered chatbot into TYPO3 websites. The extension uses the OpenAI API and supports persistent conversations through session management.
 
 ![TYPO3 Chat Bot](Documentation/Images/chatbot-preview.png)
 
 ## Features
 
-- 🤖 Interaktiver KI-Chatbot basierend auf OpenAI's GPT-Modellen
-- 💬 Session-basierte Gesprächsverläufe
-- 📱 Vollständig responsives Design
-- ⚙️ Umfangreiche Konfigurationsmöglichkeiten
-- 🔒 Sichere API-Kommunikation
-- 📝 Markdown & HTML Formatierung
-- 🎨 Anpassbares Styling
+- 🤖 Interactive AI chatbot based on OpenAI's GPT models
+- 💬 Session-based conversations
+- 📱 Fully responsive design
+- ⚙️ Extensive configuration options
+- 🔒 Secure API communication
+- 📝 Markdown & HTML formatting
+- 🎨 Customizable styling
 
-## Systemanforderungen
+## System requirements
 
-- TYPO3 11.5 LTS oder höher
-- PHP 8.1 oder höher
+- TYPO3 12.4 LTS or higher
+- PHP 8.2 or higher
 - OpenAI API Key
 - Composer
 
@@ -31,31 +31,31 @@ Die OpenAI Chatbot Extension integriert einen KI-gestützten Chatbot in TYPO3-We
 composer require mannimedia/openai-chatbot
 ```
 
-### Manuell
+### Manually
 
-1. Extension aus dem TYPO3 Extension Repository herunterladen
-2. Extension im Extension Manager aktivieren
+1. Download extension from the TYPO3 Extension Repository
+2. Extension in the Extension Manager activate
 3. Include Static TypoScript Template
-4. TYPO3 und PHP Cache leeren
+4. Empty TYPO3 and PHP cache
 
-## Konfiguration
+## Configuration
 
 ### TypoScript Setup
 
 ```typoscript
 plugin.tx_openaichatbot {
-    settings {
-        apiKey = {$plugin.tx_openaichatbot.settings.apiKey}
-        model = gpt-4-turbo-preview
-        temperature = 0.7
-        maxTokens = 1000
-    }
+settings {
+apiKey = {$plugin.tx_openaichatbot.settings.apiKey}
+model = gpt-4-turbo-preview
+temperature = 0.7
+maxTokens = 1000
+}
 }
 ```
 
-### Environment-Variablen
+### Environment variables
 
-Erstellen Sie eine `.env` Datei im Root-Verzeichnis:
+Settings in the extension
 
 ```env
 OPENAI_API_KEY=your-api-key-here
@@ -63,70 +63,69 @@ OPENAI_API_KEY=your-api-key-here
 
 ## Integration
 
-### Als Content Element
+### As content element
 
-1. Neues Content Element erstellen
-2. "Plugins" Tab wählen
-3. "OpenAI Chatbot" auswählen
-4. Konfigurationsoptionen nach Bedarf anpassen
+1. Create new content element
+2. Select "Plugins" tab
+3. Select "OpenAI Chatbot"
+4. Adjust configuration options as required
 
 ### Via TypoScript
 
 ```typoscript
 page.10 = FLUIDTEMPLATE
 page.10 {
-    file = EXT:your_sitepackage/Resources/Private/Templates/Page/Default.html
-    variables {
-        chatbot = USER
-        chatbot {
-            userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-            extensionName = OpenaiChatbot
-            pluginName = Chat
-            vendorName = Mannimedia
-        }
-    }
+file = EXT:your_sitepackage/Resources/Private/Templates/Page/Default.html
+variables {
+chatbot = USER
+chatbot {
+userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+extensionName = OpenaiChatbot
+pluginName = Chat
+vendorName = Mannimedia
+}
+}
 }
 ```
 
 ## Styling
 
-Das Styling kann über SCSS/CSS angepasst werden:
+The styling can be customized via SCSS/CSS:
 
 ```scss
 .tx-openai-chatbot {
-    // Ihre individuellen Styling-Anpassungen
+// Your individual styling adjustments
 }
 ```
 
-## API Referenz
+## API reference
 
-### Verfügbare Endpoints
+### Available endpoints
 
-
-### Request Format
+### Request format
 
 ```json
 {
-    "tx_openaichatbot_chat": {
-        "message": "Benutzernachricht",
-        "threadId": "optional-thread-id"
-    }
+"tx_openaichatbot_chat": {
+"message": "User message",
+"threadId": "optional-thread-id" 
+}
 }
 ```
 
-### Response Format
+### Response format
 
 ```json
 {
-    "success": true,
-    "response": {
-        "message": "AI Antwort",
-        "threadId": "generierte-thread-id"
-    }
+ "success": true,
+ "response": {
+ "message": "AI response",
+ "threadId": "generated-thread-id"
+ }
 }
 ```
 
-## Entwicklung
+## Development
 
 ### Build Process
 
@@ -142,54 +141,62 @@ npm run build
 composer test
 ```
 
-### Coding Standards
+### Coding standards
 
-Die Extension folgt den TYPO3 Coding Guidelines. Überprüfen Sie Ihren Code mit:
+The extension follows the TYPO3 coding guidelines. Check your code with:
 
 ```bash
 composer check-style
 composer fix-style
 ```
 
-## Fehlerbehebung
+## Troubleshooting
 
-### Bekannte Probleme
+### Known issues
 
-1. API-Verbindungsfehler
-    - API-Key überprüfen
-    - Netzwerkverbindung testen
-    - Firewall-Einstellungen prüfen
+1. API connection errors
 
-2. Session-Probleme
-    - Cache leeren
-    - Session-Storage überprüfen
-    - PHP-Session-Einstellungen verifizieren
+- Check API key
+
+- Test network connection
+
+- Check firewall settings
+
+2. Session issues
+
+- Clear cache
+
+- Check session storage
+
+- Verify PHP session settings
 
 ## Support
 
 - 📫 [GitHub Issues](https://github.com/mannimedia/openai-chatbot/issues)
+
 - 💬 [TYPO3 Slack Channel](#)
-- 📚 [Ausführliche Dokumentation](https://docs.typo3.org/p/mannimedia/openai-chatbot/main/en-us/)
 
-## Beitragen
+- 📚 [Detailed documentation](https://docs.typo3.org/p/mannimedia/openai-chatbot/main/en-us/)
 
-Beiträge sind willkommen! Bitte lesen Sie unsere [Contribution Guidelines](CONTRIBUTING.md).
+## Contribute
 
-1. Fork das Projekt
-2. Erstellen Sie Ihren Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit Ihre Änderungen (`git commit -m 'Add some AmazingFeature'`)
-4. Push zum Branch (`git push origin feature/AmazingFeature`)
-5. Öffnen Sie einen Pull Request
+Contributions are welcome! Please read our [Contribution Guidelines](CONTRIBUTING.md).
 
-## Lizenz
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
-Copyright © 2024 [Ihr Name/Firma]
+## License
 
-Dieses Projekt ist unter der MIT-Lizenz lizenziert - siehe die [LICENSE.md](LICENSE.md) Datei für Details.
+Copyright © 2024 [Your Name/Company]
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Credits
 
-- Entwickelt von [Ihr Name/Firma]
+- Developed by [Your Name/Company]
 - Powered by [OpenAI](https://openai.com)
 - Built for [TYPO3 CMS](https://typo3.org)
 
